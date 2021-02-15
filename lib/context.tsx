@@ -1,11 +1,14 @@
-import { Context, createContext, useReducer } from "react";
-
-interface GlobalContextType {}
+import { Context, createContext, Dispatch, useReducer } from "react";
 
 interface InitialState {
   user: any | null;
   cart: any | null;
 }
+interface GlobalContextType {
+  state: InitialState;
+  dispatch: Dispatch<any>;
+}
+
 interface GlobalContextProviderProps {
   children: JSX.Element;
 }
