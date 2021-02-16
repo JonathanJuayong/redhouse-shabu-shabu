@@ -1,15 +1,5 @@
-import {
-  Box,
-  Button,
-  Grid,
-  HStack,
-  IconButton,
-  Image,
-  Text,
-  VStack,
-} from "@chakra-ui/react";
-import { useContext, useState } from "react";
-import { HiMinusCircle, HiPlusCircle } from "react-icons/hi";
+import { Box, Button, Grid, Image, Text, useToast } from "@chakra-ui/react";
+import { useContext, useEffect, useState } from "react";
 import { MdAddShoppingCart, MdRemoveShoppingCart } from "react-icons/md";
 import { GlobalContext } from "../lib/context";
 import QtyCounter from "./QtyCounter";
@@ -27,8 +17,9 @@ const ProductCard: React.FC<ProductCardProps> = ({
   price,
   imageURL,
 }) => {
-  const [isAddedToCart, setIsAddedToCart] = useState<boolean>(false);
   const { state, dispatch } = useContext(GlobalContext);
+  const [isAddedToCart, setIsAddedToCart] = useState<boolean>(false);
+  const toast = useToast();
   const counterStyle = {
     opacity: isAddedToCart ? "1" : "0",
     transform: isAddedToCart ? "translateY(0)" : "translateY(10px)",
@@ -47,6 +38,13 @@ const ProductCard: React.FC<ProductCardProps> = ({
         code,
       });
       setIsAddedToCart(false);
+      toast({
+        title: "Removed from Cart",
+        description: `${name} is now removed from your cart`,
+        status: "info",
+        duration: 2000,
+        isClosable: true,
+      });
     } else {
       dispatch({
         type: "ADD_TO_CART",
@@ -59,8 +57,20 @@ const ProductCard: React.FC<ProductCardProps> = ({
         },
       });
       setIsAddedToCart(true);
+      toast({
+        title: "Added to Cart",
+        description: `${name} is now added to your cart`,
+        status: "success",
+        duration: 2000,
+        isClosable: true,
+      });
     }
   };
+  useEffect(() => {
+    const isInCart =
+      typeof state.cart.find((item) => item.code === code) !== "undefined";
+    setIsAddedToCart(isInCart);
+  }, [state.cart]);
   return (
     <Grid justifyContent="center" gap="1em" w="100%">
       <Box>
@@ -71,7 +81,7 @@ const ProductCard: React.FC<ProductCardProps> = ({
         <Text>PHP {price}.00</Text>
       </Box>
       <Box style={counterStyle} transition="all .2s">
-        <QtyCounter code={code} isAddedToCart={isAddedToCart} />
+        <QtyCounter code={code} />
       </Box>
       <Button
         colorScheme="green"
