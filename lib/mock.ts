@@ -5,7 +5,7 @@ export const mock = [
     price: 580,
     category: "Meat",
     imageSmall:
-      "https://res.cloudinary.com/taiwanhotpotballs/image/upload/v1613477876/menu/small/RH63_Tau_Pwe_lmi4um.png",
+      "https://res.cloudinary.com/taiwanhotpotballs/image/upload/v1613477878/menu/small/RH9_Imported_Beef_Superior_qibfd7.png",
     imageBig:
       "https://res.cloudinary.com/taiwanhotpotballs/image/upload/v1613477863/menu/bigger/RH9_Imported_Beef_Superior_-min_rkhba4.png",
   },

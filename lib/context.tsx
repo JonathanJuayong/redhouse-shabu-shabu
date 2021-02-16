@@ -1,4 +1,5 @@
 import { Context, createContext, Dispatch, useReducer } from "react";
+import { textSpanIsEmpty } from "typescript";
 
 interface InitialState {
   user: any | null;
@@ -37,15 +38,44 @@ export const GlobalContextProvider: React.FC<GlobalContextProviderProps> = ({
           cart: [...state.cart, action.payload],
         };
       case "REMOVE_FROM_CART":
-        const newCart = state.cart.filter((item) => {
-          return item.code !== action.code;
-        });
         return {
           ...state,
-          cart: newCart,
+          cart: state.cart.filter((item) => {
+            return item.code !== action.code;
+          }),
+        };
+      case "INCREMENT_QTY":
+        return {
+          ...state,
+          cart: state.cart.map((item) => {
+            if (item.code === action.code) {
+              return {
+                ...item,
+                qty: item.qty + 1,
+                total: (item.qty + 1) * item.price,
+              };
+            } else {
+              return item;
+            }
+          }),
+        };
+      case "DECREMENT_QTY":
+        return {
+          ...state,
+          cart: state.cart.map((item) => {
+            if (item.code === action.code) {
+              return {
+                ...item,
+                qty: item.qty - 1,
+                total: (item.qty - 1) * item.price,
+              };
+            } else {
+              return item;
+            }
+          }),
         };
       default:
-        throw new Error("Unrecognized action");
+        throw new Error("Unrecognized action type");
     }
   };
 

@@ -12,6 +12,7 @@ import { useContext, useState } from "react";
 import { HiMinusCircle, HiPlusCircle } from "react-icons/hi";
 import { MdAddShoppingCart, MdRemoveShoppingCart } from "react-icons/md";
 import { GlobalContext } from "../lib/context";
+import QtyCounter from "./QtyCounter";
 
 interface ProductCardProps {
   code: string;
@@ -26,10 +27,14 @@ const ProductCard: React.FC<ProductCardProps> = ({
   price,
   imageURL,
 }) => {
-  const [qty, setQty] = useState(0);
   const [isAddedToCart, setIsAddedToCart] = useState<boolean>(false);
   const { state, dispatch } = useContext(GlobalContext);
+  const counterStyle = {
+    opacity: isAddedToCart ? "1" : "0",
+    transform: isAddedToCart ? "translateY(0)" : "translateY(10px)",
+  };
   const btnText = isAddedToCart ? "Remove from Cart" : "Add to Cart";
+  const btnVariant = isAddedToCart ? "outline" : "solid";
   const btnIcon = isAddedToCart ? (
     <MdRemoveShoppingCart />
   ) : (
@@ -49,7 +54,8 @@ const ProductCard: React.FC<ProductCardProps> = ({
           code,
           name,
           price,
-          qty,
+          qty: 1,
+          total: price,
         },
       });
       setIsAddedToCart(true);
@@ -64,22 +70,15 @@ const ProductCard: React.FC<ProductCardProps> = ({
         <Text>{name}</Text>
         <Text>PHP {price}.00</Text>
       </Box>
-      <HStack justify="center">
-        <IconButton
-          borderRadius="50px"
-          background="none"
-          aria-label="minus button"
-          icon={<HiMinusCircle />}
-        />
-        <Text>1</Text>
-        <IconButton
-          borderRadius="50px"
-          background="none"
-          aria-label="plus button"
-          icon={<HiPlusCircle />}
-        />
-      </HStack>
-      <Button onClick={onClickHandler} rightIcon={btnIcon}>
+      <Box style={counterStyle} transition="all .2s">
+        <QtyCounter code={code} isAddedToCart={isAddedToCart} />
+      </Box>
+      <Button
+        colorScheme="green"
+        variant={btnVariant}
+        onClick={onClickHandler}
+        rightIcon={btnIcon}
+      >
         {btnText}
       </Button>
     </Grid>
