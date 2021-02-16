@@ -1,5 +1,6 @@
 import Header from "./Header";
 import Footer from "./Footer";
+import { Container, Grid } from "@chakra-ui/react";
 
 interface LayoutProps {
   children: JSX.Element;
