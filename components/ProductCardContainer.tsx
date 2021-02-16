@@ -1,5 +1,6 @@
 import { Container, Grid } from "@chakra-ui/react";
 import ProductCard from "./ProductCard";
+import { mock } from "../lib/mock";
 
 interface ProductCardContainerProps {}
 
@@ -12,13 +13,15 @@ const ProductCardContainer: React.FC<ProductCardContainerProps> = () => {
       justifyContent="center"
       gridTemplateColumns="repeat(auto-fill, minmax(250px, 250px))"
     >
-      <ProductCard />
-      <ProductCard />
-      <ProductCard />
-      <ProductCard />
-      <ProductCard />
-      <ProductCard />
-      <ProductCard />
+      {mock.map((product) => (
+        <ProductCard
+          key={product.code}
+          code={product.code}
+          name={product.name}
+          imageURL={product.imageSmall}
+          price={product.price}
+        />
+      ))}
     </Grid>
   );
 };

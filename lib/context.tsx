@@ -15,7 +15,7 @@ interface GlobalContextProviderProps {
 
 const initialState: InitialState = {
   user: null,
-  cart: null,
+  cart: [],
 };
 
 export const GlobalContext: Context<GlobalContextType | null> = createContext(
@@ -34,10 +34,15 @@ export const GlobalContextProvider: React.FC<GlobalContextProviderProps> = ({
       case "ADD_TO_CART":
         return {
           ...state,
+          cart: [...state.cart, action.payload],
         };
       case "REMOVE_FROM_CART":
+        const newCart = state.cart.filter((item) => {
+          return item.code !== action.code;
+        });
         return {
           ...state,
+          cart: newCart,
         };
       default:
         throw new Error("Unrecognized action");
