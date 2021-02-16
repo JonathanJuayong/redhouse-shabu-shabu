@@ -15,7 +15,7 @@ const Header: React.FC<HeaderProps> = () => {
       background="white"
       mb="2em"
     >
-      <Box>Redhouse Shabu Shabu</Box>
+      <Box justifySelf="center">Redhouse Shabu Shabu</Box>
       <HStack justifySelf="center" spacing="2em" as="ul" listStyleType="none">
         <li>
           <Link href="/">
@@ -25,6 +25,11 @@ const Header: React.FC<HeaderProps> = () => {
         <li>
           <Link href="/shop">
             <a>SHOP</a>
+          </Link>
+        </li>
+        <li>
+          <Link href="/shop">
+            <a>SIGN IN</a>
           </Link>
         </li>
       </HStack>
