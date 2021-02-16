@@ -61,7 +61,7 @@ export const mock = [
   },
   {
     code: "RH33",
-    name: "imported Scallop",
+    name: "Imported Scallop",
     price: 200,
     category: "Seafood",
     imageSmall:
