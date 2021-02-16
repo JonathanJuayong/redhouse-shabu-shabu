@@ -9,9 +9,17 @@ interface LayoutProps {
 const Layout: React.FC<LayoutProps> = ({ children }) => {
   return (
     <>
-      <Header />
-      {children}
-      <Footer />
+      <main className="main-container">
+        <Header />
+        {children}
+        <Footer />
+      </main>
+      <style jsx>{`
+        .main-container {
+          position: relative;
+          min-height: 100vh;
+        }
+      `}</style>
     </>
   );
 };
