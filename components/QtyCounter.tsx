@@ -5,10 +5,9 @@ import { GlobalContext } from "../lib/context";
 
 interface QtyCounterProps {
   code: string;
-  isAddedToCart: boolean;
 }
 
-const QtyCounter: React.FC<QtyCounterProps> = ({ code, isAddedToCart }) => {
+const QtyCounter: React.FC<QtyCounterProps> = ({ code }) => {
   const { state, dispatch } = useContext(GlobalContext);
   const item = state.cart.find((item) => item.code === code) ?? {};
   const count = item?.qty || 1;
