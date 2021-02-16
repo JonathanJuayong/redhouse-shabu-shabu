@@ -15,9 +15,9 @@ interface ProductCardProps {}
 
 const ProductCard: React.FC<ProductCardProps> = () => {
   return (
-    <Grid justifyContent="center" gap="1em">
+    <Grid justifyContent="center" gap="1em" w="100%">
       <Box>
-        <Image src="/images/k01_lobster_ball.png" alt="lobster ball" />
+        <Image w="100%" src="/images/k01_lobster_ball.png" alt="lobster ball" />
       </Box>
       <Box>
         <Text>Lobster Ball</Text>

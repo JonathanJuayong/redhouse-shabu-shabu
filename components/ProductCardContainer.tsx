@@ -6,8 +6,11 @@ interface ProductCardContainerProps {}
 const ProductCardContainer: React.FC<ProductCardContainerProps> = () => {
   return (
     <Grid
-      gap="1em"
-      gridTemplateColumns="repeat(auto-fill, minmax(350px, 350px))"
+      gap="2.5em"
+      margin="0 auto"
+      maxW="70vw"
+      justifyContent="center"
+      gridTemplateColumns="repeat(auto-fill, minmax(250px, 250px))"
     >
       <ProductCard />
       <ProductCard />
