@@ -27,8 +27,8 @@ const CartItem: React.FC<CartItemProps> = ({ code, name, total, imageURL }) => {
     });
   };
   return (
-    <Grid gridAutoFlow="column">
-      <Box w="250px">
+    <Grid gap="1em" gridTemplateColumns="repeat(auto-fit, minmax(200px, 1fr))">
+      <Box>
         <Image w="100%" src={imageURL} />
       </Box>
       <Grid>
