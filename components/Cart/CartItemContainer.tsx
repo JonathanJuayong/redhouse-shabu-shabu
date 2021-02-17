@@ -9,8 +9,11 @@ interface CartItemContainerProps {}
 const CartItemContainer: React.FC<CartItemContainerProps> = () => {
   const { state } = useContext(GlobalContext);
   const cartCount = state.cart.length;
+  const cartTotal = state.cart.reduce((acc, cur) => {
+    return (acc += cur.total);
+  }, 0);
   return (
-    <Grid gap="1em">
+    <Grid gap="2em">
       {cartCount === 0 ? (
         <>
           <Text as="h3">Your Cart is Empty</Text>
@@ -20,15 +23,20 @@ const CartItemContainer: React.FC<CartItemContainerProps> = () => {
           </Link>
         </>
       ) : (
-        state.cart.map((item) => (
-          <CartItem
-            key={item.code}
-            code={item.code}
-            name={item.name}
-            total={item.total}
-            imageURL={item.imageURL}
-          />
-        ))
+        <>
+          <Text mb="1em" as="h2">
+            Total: PHP {cartTotal}.00
+          </Text>
+          {state.cart.map((item) => (
+            <CartItem
+              key={item.code}
+              code={item.code}
+              name={item.name}
+              total={item.total}
+              imageURL={item.imageURL}
+            />
+          ))}
+        </>
       )}
     </Grid>
   );
