@@ -465,7 +465,7 @@ export const mock = [
     price: 600,
     category: "Set",
     imageSmall:
-      "https://res.cloudinary.com/taiwanhotpotballs/image/upload/v1613477879/menu/small/SET_C_aa33y8.png",
+      "https://res.cloudinary.com/taiwanhotpotballs/image/upload/v1613499449/menu/small/SET_C_aa33y8.png",
     imageBig:
       "https://res.cloudinary.com/taiwanhotpotballs/image/upload/v1613477864/menu/bigger/SET_C_xnbzek.png",
   },
