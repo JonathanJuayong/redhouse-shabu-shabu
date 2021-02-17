@@ -9,10 +9,10 @@ const ShopPage: React.FC<ShopPageProps> = () => {
   return (
     <>
       <main>
-        <div className="debug">
+        {/* <div className="debug">
           <h3>Debug:</h3>
           <pre>{JSON.stringify(state, null, 2)}</pre>
-        </div>
+        </div> */}
         <ProductCardContainer />
       </main>
       <style jsx>{`
