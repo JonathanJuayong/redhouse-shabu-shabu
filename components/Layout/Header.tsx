@@ -2,6 +2,7 @@ import { Badge, Box, Grid, HStack, Text, VStack } from "@chakra-ui/react";
 import Link from "next/link";
 import { useContext } from "react";
 import { GlobalContext } from "../../lib/context";
+import { useAuthProvider } from "../../lib/hooks";
 
 interface HeaderProps {
   onOpen: () => void;
@@ -10,6 +11,9 @@ interface HeaderProps {
 const Header: React.FC<HeaderProps> = ({ onOpen }) => {
   const { state } = useContext(GlobalContext);
   const cartCount = state.cart.length;
+  const { googleSignIn, signOut } = useAuthProvider();
+  const authText = state.user ? "SIGN OUT" : "SIGN IN";
+  const authHandler = state.user ? signOut : googleSignIn;
   return (
     <Grid
       zIndex={4}
@@ -35,7 +39,7 @@ const Header: React.FC<HeaderProps> = ({ onOpen }) => {
         </li>
         <li>
           <Link href="/shop">
-            <a>SIGN IN</a>
+            <a onClick={authHandler}>{authText}</a>
           </Link>
         </li>
         <li>

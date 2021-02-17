@@ -1,4 +1,5 @@
 import { Context, createContext, Dispatch, useEffect, useReducer } from "react";
+import { auth } from "../firebase";
 import { loadLocalStorage, saveToLocalStorage } from "../utils";
 import reducer from "./reducer";
 
@@ -28,6 +29,24 @@ export const GlobalContextProvider: React.FC<GlobalContextProviderProps> = ({
   children,
 }) => {
   const [state, dispatch] = useReducer(reducer, initialState);
+
+  //set up user observer
+  useEffect(() => {
+    const unsubscribe = auth.onAuthStateChanged((user) => {
+      if (user) {
+        dispatch({
+          type: "SET_USER",
+          user,
+        });
+      } else {
+        dispatch({
+          type: "SET_USER",
+          user: null,
+        });
+      }
+    });
+    return unsubscribe;
+  }, []);
 
   //load cart from localstorage on mount
   useEffect(() => {

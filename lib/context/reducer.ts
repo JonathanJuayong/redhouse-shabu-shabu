@@ -3,6 +3,7 @@ const reducer = (state, action) => {
     case "SET_USER":
       return {
         ...state,
+        user: action.user,
       };
     case "SET_CART":
       return {

@@ -1,4 +1,4 @@
-import firebase from "firebase";
+import firebase from "firebase/app";
 import "firebase/auth";
 import "firebase/firestore";
 
@@ -17,4 +17,6 @@ if (firebase.apps.length === 0) {
 }
 
 export const auth = firebase.auth();
+export const googleProvider = new firebase.auth.GoogleAuthProvider();
+
 export const db = firebase.firestore();
