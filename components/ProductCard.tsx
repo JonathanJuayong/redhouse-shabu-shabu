@@ -42,7 +42,7 @@ const ProductCard: React.FC<ProductCardProps> = ({
         title: "Removed from Cart",
         description: `${name} is now removed from your cart`,
         status: "info",
-        duration: 2000,
+        duration: 1500,
         isClosable: true,
       });
     } else {
@@ -54,6 +54,7 @@ const ProductCard: React.FC<ProductCardProps> = ({
           price,
           qty: 1,
           total: price,
+          imageURL,
         },
       });
       setIsAddedToCart(true);
@@ -61,7 +62,7 @@ const ProductCard: React.FC<ProductCardProps> = ({
         title: "Added to Cart",
         description: `${name} is now added to your cart`,
         status: "success",
-        duration: 2000,
+        duration: 1500,
         isClosable: true,
       });
     }
