@@ -13,7 +13,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
   return (
     <>
       <main className="main-container">
-        <Header />
+        <Header onOpen={onOpen} />
         {children}
         <Footer />
         <IconButton
