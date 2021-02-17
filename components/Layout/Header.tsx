@@ -1,6 +1,15 @@
-import { Badge, Box, Grid, HStack, Text, VStack } from "@chakra-ui/react";
+import {
+  Badge,
+  Box,
+  Grid,
+  HStack,
+  IconButton,
+  Text,
+  VStack,
+} from "@chakra-ui/react";
 import Link from "next/link";
 import { useContext } from "react";
+import { MdShoppingCart } from "react-icons/md";
 import { GlobalContext } from "../../lib/context";
 import { useAuthProvider } from "../../lib/hooks";
 
@@ -34,25 +43,29 @@ const Header: React.FC<HeaderProps> = ({ onOpen }) => {
         </li>
         <li>
           <Link href="/shop">
-            <a>SHOP</a>
-          </Link>
-        </li>
-        <li>
-          <Link href="/shop">
             <a onClick={authHandler}>{authText}</a>
           </Link>
         </li>
         <li>
-          <Text cursor="pointer" as="a" onClick={onOpen}>
-            CART{" "}
+          <Box position="relative">
+            <IconButton
+              borderRadius="50px"
+              aria-label="cart drawer"
+              icon={<MdShoppingCart />}
+              onClick={onOpen}
+            />
             <Badge
+              borderRadius="50px"
+              top="0"
+              right="-5px"
+              position="absolute"
               colorScheme="green"
               transition="opacity .2s"
               opacity={cartCount > 0 ? 1 : 0}
             >
               {cartCount}
             </Badge>
-          </Text>
+          </Box>
         </li>
       </HStack>
     </Grid>
