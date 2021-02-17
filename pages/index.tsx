@@ -13,9 +13,9 @@ import ProductDescription from "../components/ProductDescription";
 import { GlobalContext } from "../lib/context";
 import Head from "next/head";
 
-interface ShopPageProps {}
+interface HomePageProps {}
 
-const ShopPage: React.FC<ShopPageProps> = () => {
+const HomePage: React.FC<HomePageProps> = () => {
   const router = useRouter();
   const { code } = router.query;
   const { state } = useContext(GlobalContext);
@@ -54,4 +54,4 @@ const ShopPage: React.FC<ShopPageProps> = () => {
   );
 };
 
-export default ShopPage;
+export default HomePage;
