@@ -1,9 +1,15 @@
-import { Box, Grid, HStack, VStack } from "@chakra-ui/react";
+import { Badge, Box, Grid, HStack, Text, VStack } from "@chakra-ui/react";
 import Link from "next/link";
+import { useContext } from "react";
+import { GlobalContext } from "../../lib/context";
 
-interface HeaderProps {}
+interface HeaderProps {
+  onOpen: () => void;
+}
 
-const Header: React.FC<HeaderProps> = () => {
+const Header: React.FC<HeaderProps> = ({ onOpen }) => {
+  const { state } = useContext(GlobalContext);
+  const cartCount = state.cart.length;
   return (
     <Grid
       zIndex={4}
@@ -31,6 +37,18 @@ const Header: React.FC<HeaderProps> = () => {
           <Link href="/shop">
             <a>SIGN IN</a>
           </Link>
+        </li>
+        <li>
+          <Text cursor="pointer" as="a" onClick={onOpen}>
+            CART{" "}
+            <Badge
+              colorScheme="green"
+              transition="opacity .2s"
+              opacity={cartCount > 0 ? 1 : 0}
+            >
+              {cartCount}
+            </Badge>
+          </Text>
         </li>
       </HStack>
     </Grid>
