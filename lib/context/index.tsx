@@ -34,9 +34,15 @@ export const GlobalContextProvider: React.FC<GlobalContextProviderProps> = ({
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged((user) => {
       if (user) {
+        const { uid, displayName, photoURL, email } = user;
         dispatch({
           type: "SET_USER",
-          user,
+          user: {
+            uid,
+            displayName,
+            photoURL,
+            email,
+          },
         });
       } else {
         dispatch({
