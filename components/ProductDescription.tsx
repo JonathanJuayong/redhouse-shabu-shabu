@@ -21,6 +21,7 @@ const ProductDescription: React.FC<ProductDescriptionProps> = ({ code }) => {
   };
   return (
     <Grid
+      alignItems="center"
       justifyContent="center"
       gap="2em"
       gridTemplateColumns="repeat(auto-fit, minmax(250px, 1fr))"
