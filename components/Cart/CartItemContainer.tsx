@@ -13,7 +13,7 @@ const CartItemContainer: React.FC<CartItemContainerProps> = () => {
     return (acc += cur.total);
   }, 0);
   return (
-    <Grid gap="2em">
+    <Grid gap="2em" mb="2em">
       {cartCount === 0 ? (
         <>
           <Text as="h3">Your Cart is Empty</Text>
