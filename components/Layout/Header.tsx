@@ -45,9 +45,9 @@ const Header: React.FC<HeaderProps> = ({ onOpen }) => {
           </Link>
         </li>
         <li>
-          <Link href="/shop">
-            <a onClick={authHandler}>{authText}</a>
-          </Link>
+          <Text as="a" cursor="pointer" onClick={authHandler}>
+            {authText}
+          </Text>
         </li>
         <li>
           <Box position="relative">
