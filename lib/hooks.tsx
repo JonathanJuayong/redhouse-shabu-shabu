@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
-import { auth, googleProvider } from "./firebase";
+import { auth, db, googleProvider } from "./firebase";
+import firebase from "firebase/app";
 
 export const useAuthProvider = () => {
   const googleSignIn = () => {
@@ -25,4 +26,22 @@ export const useAuthProvider = () => {
   };
 
   return { googleSignIn, signOut };
+};
+
+export const useFirestore = () => {
+  const createOrder = async (user, orders, branch, orderIdHandler) => {
+    try {
+      const { id } = await db.collection("orders").add({
+        user,
+        orders,
+        branch,
+        timestamp: firebase.firestore.FieldValue.serverTimestamp(),
+      });
+      orderIdHandler(id);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  return { createOrder };
 };
