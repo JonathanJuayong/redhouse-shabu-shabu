@@ -6,7 +6,12 @@ module.exports = {
     return [
       {
         source: "/products",
-        destination: "/shop",
+        destination: "/",
+        permanent: true,
+      },
+      {
+        source: "/confirmed",
+        destination: "/",
         permanent: true,
       },
     ];
