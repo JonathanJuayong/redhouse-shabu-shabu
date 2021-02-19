@@ -14,14 +14,24 @@ import {
 } from "@chakra-ui/react";
 import { useState } from "react";
 import { FcGoogle } from "react-icons/fc";
-import { MdEmail } from "react-icons/md";
+import { MdEmail, MdPerson } from "react-icons/md";
 
 interface CheckoutFormProps {}
 
 const CheckoutForm: React.FC<CheckoutFormProps> = () => {
+  const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [number, setNumber] = useState("");
   const toast = useToast();
+  const handler = (regex, limit, setter) => (e) => {
+    const value = e.target.value as string;
+    if (value.length === limit + 1) return;
+    if (value === "" || value.match(regex)) setter(value);
+  };
+  const nameRegex = /^[a-zA-z]+$/;
+  const numberRegex = /^[0-9]+$/;
+  const nameHandler = handler(nameRegex, 80, setName);
+  const phoneNumberHandler = handler(numberRegex, 10, setNumber);
   const onSubmitHandler = (e) => {
     e.preventDefault();
     if (number.length < 10) {
@@ -36,18 +46,24 @@ const CheckoutForm: React.FC<CheckoutFormProps> = () => {
       return;
     }
   };
-  const phoneNumberHandler = (e) => {
-    const regex = /^[0-9]+$/;
-    const value = e.target.value as string;
-    if (value.length === 11) return;
-    if (value === "" || value.match(regex)) setNumber(value);
-  };
   return (
     <Grid gap="1em">
       {/* <Button rightIcon={<FcGoogle />}>Sign in with Google</Button>
       <Text as="p">or</Text> */}
       <form onSubmit={onSubmitHandler}>
         <Grid gap="1em">
+          <FormControl id="name" isRequired>
+            <FormLabel>Name</FormLabel>
+            <InputGroup>
+              <InputLeftAddon children={<MdPerson />} />
+              <Input
+                placeholder="Juan Dela Cruz"
+                type="text"
+                value={name}
+                onChange={nameHandler}
+              />
+            </InputGroup>
+          </FormControl>
           <FormControl id="email" isRequired>
             <FormLabel>Email</FormLabel>
             <InputGroup>
