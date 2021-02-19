@@ -37,7 +37,10 @@ const CartDrawer: React.FC<CartDrawerProps> = ({ isOpen, onClose }) => {
               <Button
                 w="100%"
                 colorScheme="green"
-                onClick={() => router.push("/checkout")}
+                onClick={() => {
+                  router.push("/checkout");
+                  onClose();
+                }}
               >
                 Checkout
               </Button>
