@@ -1,36 +1,77 @@
-import { Box, Button, FormControl, Grid, Text } from "@chakra-ui/react";
+import {
+  Box,
+  Button,
+  Collapse,
+  Divider,
+  FormControl,
+  Grid,
+  Text,
+  useDisclosure,
+} from "@chakra-ui/react";
 import { useRouter } from "next/dist/client/router";
 import CartItemContainer from "../components/Cart/CartItemContainer";
 import CheckoutForm from "../components/CheckoutForm";
 import CheckoutSummary from "../components/CheckoutSummary";
-import { FaChevronLeft } from "react-icons/fa";
+import { FaChevronLeft, FaChevronUp, FaChevronDown } from "react-icons/fa";
+import { useContext } from "react";
+import { GlobalContext } from "../lib/context";
 
 interface CheckoutPageProps {}
 
 const CheckoutPage: React.FC<CheckoutPageProps> = () => {
   const router = useRouter();
-  return (
-    <>
+  const {
+    state: { cart },
+  } = useContext(GlobalContext);
+  const { isOpen, onToggle } = useDisclosure();
+  const btnText = !isOpen ? "Hide Summary" : "Show Summary";
+  const btnIcon = !isOpen ? <FaChevronUp /> : <FaChevronDown />;
+  if (cart.length === 0)
+    return (
       <Grid
-        maxW="70vw"
+        h="100vh"
         margin="0 auto"
-        py="4em"
+        alignItems="center"
+        alignContent="center"
+        justifyContent="center"
         gap="1em"
-        gridTemplateColumns="repeat(auto-fit, minmax(34vw, 1fr))"
+        w="30vw"
       >
-        <Grid gap="2em">
-          <CheckoutForm />
-          <Button
-            leftIcon={<FaChevronLeft />}
-            onClick={() => router.push("/")}
-            variant="link"
-          >
-            Go back to shop
-          </Button>
-        </Grid>
-        <CheckoutSummary />
+        <Text>There are no items in your cart</Text>
+        <Button colorScheme="green" onClick={() => router.push("/")}>
+          Go back to shop
+        </Button>
       </Grid>
-    </>
+    );
+  return (
+    <Grid
+      maxW="70vw"
+      margin="0 auto"
+      py="4em"
+      gap="1em"
+      gridTemplateColumns="repeat(auto-fit, minmax(34vw, 1fr))"
+    >
+      <Grid alignContent="start" gap="1em">
+        <Button rightIcon={btnIcon} variant="link" onClick={onToggle} w="100%">
+          {btnText}
+        </Button>
+        <Collapse in={!isOpen} animateOpacity>
+          <Box>
+            <CheckoutSummary />
+          </Box>
+        </Collapse>
+      </Grid>
+      <Grid gap="2em">
+        <CheckoutForm />
+        <Button
+          leftIcon={<FaChevronLeft />}
+          onClick={() => router.push("/")}
+          variant="link"
+        >
+          Go back to shop
+        </Button>
+      </Grid>
+    </Grid>
   );
 };
 
