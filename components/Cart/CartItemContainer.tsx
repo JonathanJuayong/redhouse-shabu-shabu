@@ -1,4 +1,5 @@
-import { Grid, Text } from "@chakra-ui/react";
+import { Button, Grid, Text } from "@chakra-ui/react";
+import { useRouter } from "next/dist/client/router";
 import Link from "next/link";
 import { useContext } from "react";
 import { GlobalContext } from "../../lib/context";
@@ -17,16 +18,13 @@ const CartItemContainer: React.FC<CartItemContainerProps> = () => {
       {cartCount === 0 ? (
         <>
           <Text as="h3">Your Cart is Empty</Text>
-          <Text as="p">You can add items by visiting the shop page</Text>
-          <Link href="/shop">
-            <a>Click Here</a>
-          </Link>
+          <Text as="p">
+            You can add items by clicking the Add to Cart button
+          </Text>
         </>
       ) : (
         <>
-          <Text mb="1em" as="h2">
-            Total: PHP {cartTotal}.00
-          </Text>
+          <Text as="h2">Total: PHP {cartTotal}.00</Text>
           {state.cart.map((item) => (
             <CartItem
               key={item.code}
