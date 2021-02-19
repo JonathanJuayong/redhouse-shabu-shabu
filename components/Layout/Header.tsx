@@ -25,8 +25,10 @@ const Header: React.FC<HeaderProps> = ({ onOpen }) => {
   const authHandler = state.user ? signOut : googleSignIn;
   return (
     <Grid
+      alignContent="center"
+      gap="1em"
       zIndex={4}
-      h="10vh"
+      h="15vh"
       alignItems="center"
       justifyContent="center"
       position="sticky"
