@@ -20,7 +20,7 @@ const CheckoutSummary: React.FC<CheckoutSummaryProps> = () => {
     return (acc += cur.total);
   }, 0);
   return (
-    <Grid>
+    <Grid gap="1em" maxH="33vh" overflow="hidden" overflowY="scroll">
       <Table>
         <Thead>
           <Tr>
