@@ -3,13 +3,17 @@ import Footer from "./Footer";
 import { Container, Grid, IconButton, useDisclosure } from "@chakra-ui/react";
 import { MdShoppingCart } from "react-icons/md";
 import CartDrawer from "../Cart/CartDrawer";
+import { useRouter } from "next/dist/client/router";
 
 interface LayoutProps {
   children: JSX.Element;
 }
 
 const Layout: React.FC<LayoutProps> = ({ children }) => {
+  const route = useRouter();
+  const { pathname } = route;
   const { isOpen, onOpen, onClose } = useDisclosure();
+  if (pathname === "/checkout") return <>{children}</>;
   return (
     <>
       <main className="main-container">
