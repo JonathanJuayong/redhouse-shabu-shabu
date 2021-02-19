@@ -26,6 +26,7 @@ const Header: React.FC<HeaderProps> = ({ onOpen }) => {
   return (
     <Grid
       alignContent="center"
+      py="3em"
       gap="1em"
       zIndex={4}
       h="15vh"
