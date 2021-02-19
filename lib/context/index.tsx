@@ -3,9 +3,19 @@ import { auth } from "../firebase";
 import { loadLocalStorage, saveToLocalStorage } from "../utils";
 import reducer from "./reducer";
 
+interface UserType {
+  uid: string;
+  photoURL: string;
+  displayName: string;
+  photoUrl: string;
+  email: string;
+  phone: string;
+}
+
 interface InitialState {
-  user: any | null;
+  user: UserType | null;
   cart: any | null;
+  branch: string | null;
 }
 interface GlobalContextType {
   state: InitialState;
@@ -19,6 +29,7 @@ interface GlobalContextProviderProps {
 const initialState: InitialState = {
   user: null,
   cart: [],
+  branch: null,
 };
 
 export const GlobalContext: Context<GlobalContextType | null> = createContext(
@@ -42,6 +53,7 @@ export const GlobalContextProvider: React.FC<GlobalContextProviderProps> = ({
             displayName,
             photoURL,
             email,
+            phone: "",
           },
         });
       } else {

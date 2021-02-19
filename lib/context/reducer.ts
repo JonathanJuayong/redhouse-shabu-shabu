@@ -52,6 +52,11 @@ const reducer = (state, action) => {
           }
         }),
       };
+    case "SET_BRANCH":
+      return {
+        ...state,
+        branch: action.branch,
+      };
     default:
       throw new Error("Unrecognized action type");
   }
