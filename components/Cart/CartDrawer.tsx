@@ -1,11 +1,14 @@
 import {
+  Button,
   Drawer,
   DrawerBody,
   DrawerCloseButton,
   DrawerContent,
+  DrawerFooter,
   DrawerHeader,
   DrawerOverlay,
 } from "@chakra-ui/react";
+import { useRouter } from "next/dist/client/router";
 import CartItemContainer from "./CartItemContainer";
 
 interface CartDrawerProps {
@@ -14,7 +17,7 @@ interface CartDrawerProps {
 }
 
 const CartDrawer: React.FC<CartDrawerProps> = ({ isOpen, onClose }) => {
-  const sizes = ["md", "lg", "full"];
+  const router = useRouter();
   return (
     <Drawer isOpen={isOpen} placement="right" onClose={onClose} size="md">
       <DrawerOverlay>
@@ -24,6 +27,15 @@ const CartDrawer: React.FC<CartDrawerProps> = ({ isOpen, onClose }) => {
           <DrawerBody>
             <CartItemContainer />
           </DrawerBody>
+          <DrawerFooter>
+            <Button
+              w="100%"
+              colorScheme="green"
+              onClick={() => router.push("/checkout")}
+            >
+              Checkout
+            </Button>
+          </DrawerFooter>
         </DrawerContent>
       </DrawerOverlay>
     </Drawer>
