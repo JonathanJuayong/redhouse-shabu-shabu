@@ -41,7 +41,7 @@ const CheckoutForm: React.FC<CheckoutFormProps> = () => {
     if (value.length === limit + 1) return;
     if (value === "" || value.match(regex)) setter(value);
   };
-  const nameRegex = /^[a-zA-z]+$/;
+  const nameRegex = /^[a-zA-z ]+$/;
   const numberRegex = /^[0-9]+$/;
   const nameHandler = handler(nameRegex, 80, setName);
   const phoneNumberHandler = handler(numberRegex, 10, setNumber);
@@ -74,7 +74,7 @@ const CheckoutForm: React.FC<CheckoutFormProps> = () => {
     });
     onOpen();
   };
-  const handleProcessOrder = () => {
+  const handleProcessOrder = async () => {
     const orderConfirmationHandler = (id) => {
       router.push(`/confirmed?orderId=${id}`, "/checkout");
     };
