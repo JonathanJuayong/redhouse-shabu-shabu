@@ -16,6 +16,7 @@ interface InitialState {
   user: UserType | null;
   cart: any | null;
   branch: string | null;
+  products;
 }
 interface GlobalContextType {
   state: InitialState;
@@ -30,6 +31,7 @@ const initialState: InitialState = {
   user: null,
   cart: [],
   branch: null,
+  products: [],
 };
 
 export const GlobalContext: Context<GlobalContextType | null> = createContext(

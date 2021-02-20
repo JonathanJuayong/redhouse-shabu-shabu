@@ -10,6 +10,11 @@ const reducer = (state, action) => {
         ...state,
         cart: action.payload,
       };
+    case "SET_PRODUCTS":
+      return {
+        ...state,
+        products: action.products,
+      };
     case "ADD_TO_CART":
       return {
         ...state,
