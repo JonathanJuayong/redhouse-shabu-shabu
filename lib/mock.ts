@@ -1,5 +1,35 @@
 export const mock = [
   {
+    code: "SETA",
+    name: "Set A",
+    price: 1350,
+    category: "Set",
+    imageSmall:
+      "https://res.cloudinary.com/taiwanhotpotballs/image/upload/v1613477879/menu/small/SET_A_a1xd14.png",
+    imageBig:
+      "https://res.cloudinary.com/taiwanhotpotballs/image/upload/v1613477863/menu/bigger/SET_A_z2jhs5.png",
+  },
+  {
+    code: "SETB",
+    name: "Set B",
+    price: 900,
+    category: "Set",
+    imageSmall:
+      "https://res.cloudinary.com/taiwanhotpotballs/image/upload/v1613477878/menu/small/SET_B_shsf1g.png",
+    imageBig:
+      "https://res.cloudinary.com/taiwanhotpotballs/image/upload/v1613477861/menu/bigger/SET_B_icrscz.png",
+  },
+  {
+    code: "SETC",
+    name: "Set C",
+    price: 600,
+    category: "Set",
+    imageSmall:
+      "https://res.cloudinary.com/taiwanhotpotballs/image/upload/v1613499449/menu/small/SET_C_aa33y8.png",
+    imageBig:
+      "https://res.cloudinary.com/taiwanhotpotballs/image/upload/v1613477864/menu/bigger/SET_C_xnbzek.png",
+  },
+  {
     code: "RH09",
     name: "Imported Beef Superior",
     price: 580,
@@ -438,35 +468,5 @@ export const mock = [
       "https://res.cloudinary.com/taiwanhotpotballs/image/upload/v1613477881/menu/small/t10_taiwan_sausage_eoqqci.png",
     imageBig:
       "https://res.cloudinary.com/taiwanhotpotballs/image/upload/v1613477863/menu/bigger/T10_Taiwan_Sausage_emzzvr.jpg",
-  },
-  {
-    code: "SETA",
-    name: "Set A",
-    price: 1350,
-    category: "Set",
-    imageSmall:
-      "https://res.cloudinary.com/taiwanhotpotballs/image/upload/v1613477879/menu/small/SET_A_a1xd14.png",
-    imageBig:
-      "https://res.cloudinary.com/taiwanhotpotballs/image/upload/v1613477863/menu/bigger/SET_A_z2jhs5.png",
-  },
-  {
-    code: "SETB",
-    name: "Set B",
-    price: 900,
-    category: "Set",
-    imageSmall:
-      "https://res.cloudinary.com/taiwanhotpotballs/image/upload/v1613477878/menu/small/SET_B_shsf1g.png",
-    imageBig:
-      "https://res.cloudinary.com/taiwanhotpotballs/image/upload/v1613477861/menu/bigger/SET_B_icrscz.png",
-  },
-  {
-    code: "SETC",
-    name: "Set C",
-    price: 600,
-    category: "Set",
-    imageSmall:
-      "https://res.cloudinary.com/taiwanhotpotballs/image/upload/v1613499449/menu/small/SET_C_aa33y8.png",
-    imageBig:
-      "https://res.cloudinary.com/taiwanhotpotballs/image/upload/v1613477864/menu/bigger/SET_C_xnbzek.png",
   },
 ];
