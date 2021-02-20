@@ -36,6 +36,7 @@ export const useFirestore = () => {
         orders,
         branch,
         timestamp: firebase.firestore.FieldValue.serverTimestamp(),
+        status: "pending",
       });
       orderIdHandler(id);
     } catch (error) {
@@ -43,5 +44,16 @@ export const useFirestore = () => {
     }
   };
 
-  return { createOrder };
+  const getAllProducts = async () => {
+    const ref = db.doc("products/all");
+    const snapshot = await ref.get();
+    return snapshot.data().items;
+  };
+  const getProduct = async (code) => {
+    const ref = db.doc(`products/${code}`);
+    const snapshot = await ref.get();
+    return snapshot.data();
+  };
+
+  return { createOrder, getAllProducts, getProduct };
 };
