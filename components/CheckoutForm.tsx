@@ -135,9 +135,11 @@ const CheckoutForm: React.FC<CheckoutFormProps> = () => {
                 onChange={(e) => setBranch(e.target.value as string)}
                 value={branch}
               >
-                <option value="asf">A.S. Fortuna (Mandaue)</option>
-                <option value="cts">City Times Square (Mandaue)</option>
-                <option value="ceb">Cebu City (Cebu City)</option>
+                <option value="AS Fortuna">A.S. Fortuna (Mandaue)</option>
+                <option value="City Times Square">
+                  City Times Square (Mandaue)
+                </option>
+                <option value="Cebu City">Cebu City (Cebu City)</option>
               </Select>
             </FormControl>
             <Button type="submit">Proceed</Button>
