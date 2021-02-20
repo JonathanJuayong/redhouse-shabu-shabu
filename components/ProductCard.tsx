@@ -35,7 +35,7 @@ const ProductCard: React.FC<ProductCardProps> = ({
   }, [state.cart]);
   return (
     <Grid justifyContent="center" gap="1em" w="100%">
-      <Link scroll={false} href={`?code=${code}`} as={`/products/${code}`}>
+      <Link scroll={false} href={`/?code=${code}`} as={`/products/${code}`}>
         <Box cursor="pointer">
           <Image w="100%" src={imageURL} alt={name} />
         </Box>
