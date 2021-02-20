@@ -1,7 +1,6 @@
 import { Box, Button, Grid, Image, Skeleton, Text } from "@chakra-ui/react";
 import { useContext } from "react";
 import { GlobalContext } from "../lib/context";
-import { mock } from "../lib/mock";
 import CartButton from "./CartButton";
 import QtyCounter from "./QtyCounter";
 
@@ -11,8 +10,8 @@ interface ProductDescriptionProps {
 
 const ProductDescription: React.FC<ProductDescriptionProps> = ({ code }) => {
   const { state } = useContext(GlobalContext);
-  const item = mock.find((item) => item.code === code);
-  const { name, price, imageBig, category } = item;
+  const item = state.products.find((item) => item.code === code);
+  const { name, price, imageBig, category } = item || {};
   const isAddedToCart =
     typeof state.cart.find((item) => item.code === code) !== "undefined";
   const counterStyle = {

@@ -2,7 +2,6 @@ import { Button, useToast } from "@chakra-ui/react";
 import { useContext } from "react";
 import { MdAddShoppingCart, MdRemoveShoppingCart } from "react-icons/md";
 import { GlobalContext } from "../lib/context";
-import { mock } from "../lib/mock";
 
 interface CartButtonProps {
   isAddedToCart: boolean;
@@ -11,9 +10,9 @@ interface CartButtonProps {
 
 const CartButton: React.FC<CartButtonProps> = ({ isAddedToCart, code }) => {
   const toast = useToast();
-  const { dispatch } = useContext(GlobalContext);
-  const item = mock.find((item) => item.code === (code as string));
-  const { name, price, imageSmall } = item;
+  const { state, dispatch } = useContext(GlobalContext);
+  const item = state.products.find((item) => item.code === (code as string));
+  const { name, price, imageSmall } = item || {};
   const btnText = isAddedToCart ? "Remove from Cart" : "Add to Cart";
   const btnVariant = isAddedToCart ? "outline" : "solid";
   const btnIcon = isAddedToCart ? (
