@@ -1,10 +1,19 @@
-import { Box, Button, Grid, Image, Text, useToast } from "@chakra-ui/react";
+import {
+  Box,
+  Button,
+  Grid,
+  Image as ChakraImage,
+  Skeleton,
+  Text,
+  useToast,
+} from "@chakra-ui/react";
 import Link from "next/link";
 import { useContext, useEffect, useState } from "react";
 import { MdAddShoppingCart, MdRemoveShoppingCart } from "react-icons/md";
 import { GlobalContext } from "../lib/context";
 import CartButton from "./CartButton";
 import QtyCounter from "./QtyCounter";
+import Image from "next/image";
 
 interface ProductCardProps {
   code: string;
@@ -37,7 +46,14 @@ const ProductCard: React.FC<ProductCardProps> = ({
     <Grid justifyContent="center" gap="1em" w="100%">
       <Link scroll={false} href={`/?code=${code}`} as={`/products/${code}`}>
         <Box cursor="pointer">
-          <Image w="100%" src={imageURL} alt={name} />
+          <ChakraImage
+            loading="lazy"
+            w="250px"
+            h="166px"
+            src={imageURL}
+            alt={name}
+            fallback={<Skeleton w="100%" h="100%" />}
+          />
         </Box>
       </Link>
       <Box>
