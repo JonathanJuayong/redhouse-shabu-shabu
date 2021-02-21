@@ -1,12 +1,4 @@
-import {
-  Box,
-  Button,
-  Grid,
-  HStack,
-  Text,
-  VStack,
-  Image,
-} from "@chakra-ui/react";
+import { Box, Button, Grid, Text, Image } from "@chakra-ui/react";
 import { useContext } from "react";
 import { GlobalContext } from "../../lib/context";
 import QtyCounter from "../QtyCounter";

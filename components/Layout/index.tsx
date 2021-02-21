@@ -1,13 +1,6 @@
 import Header from "./Header";
 import Footer from "./Footer";
-import {
-  Badge,
-  Box,
-  Container,
-  Grid,
-  IconButton,
-  useDisclosure,
-} from "@chakra-ui/react";
+import { Badge, Box, IconButton, useDisclosure } from "@chakra-ui/react";
 import { MdShoppingCart } from "react-icons/md";
 import CartDrawer from "../Cart/CartDrawer";
 import { useRouter } from "next/dist/client/router";

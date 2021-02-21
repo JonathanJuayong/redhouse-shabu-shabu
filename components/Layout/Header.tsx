@@ -1,12 +1,4 @@
-import {
-  Badge,
-  Box,
-  Grid,
-  HStack,
-  IconButton,
-  Text,
-  VStack,
-} from "@chakra-ui/react";
+import { Badge, Box, Grid, HStack, IconButton, Text } from "@chakra-ui/react";
 import Link from "next/link";
 import { useContext } from "react";
 import { MdShoppingCart } from "react-icons/md";

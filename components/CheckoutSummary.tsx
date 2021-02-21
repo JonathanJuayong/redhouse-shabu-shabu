@@ -1,14 +1,4 @@
-import {
-  Grid,
-  Table,
-  TableCaption,
-  Tbody,
-  Td,
-  Text,
-  Th,
-  Thead,
-  Tr,
-} from "@chakra-ui/react";
+import { Grid, Table, Tbody, Td, Text, Th, Thead, Tr } from "@chakra-ui/react";
 import { useContext } from "react";
 import { GlobalContext } from "../lib/context";
 

@@ -1,6 +1,4 @@
-import { Button, Grid, Text } from "@chakra-ui/react";
-import { useRouter } from "next/dist/client/router";
-import Link from "next/link";
+import { Grid, Text } from "@chakra-ui/react";
 import { useContext } from "react";
 import { GlobalContext } from "../../lib/context";
 import CartItem from "./CartItem";

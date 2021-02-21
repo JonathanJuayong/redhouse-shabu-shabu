@@ -3,19 +3,16 @@ import {
   FormControl,
   FormLabel,
   Grid,
-  HStack,
   Input,
   InputGroup,
   InputLeftAddon,
   Select,
-  Text,
   Tooltip,
   useDisclosure,
   useToast,
 } from "@chakra-ui/react";
 import { useRouter } from "next/dist/client/router";
 import { useContext, useState } from "react";
-import { FcGoogle } from "react-icons/fc";
 import { MdEmail, MdPerson } from "react-icons/md";
 import { GlobalContext } from "../lib/context";
 import { useFirestore } from "../lib/hooks";

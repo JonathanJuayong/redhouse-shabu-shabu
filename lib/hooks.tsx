@@ -1,4 +1,3 @@
-import { useEffect, useState } from "react";
 import { auth, db, googleProvider } from "./firebase";
 import firebase from "firebase/app";
 

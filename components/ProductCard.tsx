@@ -1,19 +1,15 @@
 import {
   Box,
-  Button,
   Grid,
   Image as ChakraImage,
   Skeleton,
   Text,
-  useToast,
 } from "@chakra-ui/react";
 import Link from "next/link";
 import { useContext, useEffect, useState } from "react";
-import { MdAddShoppingCart, MdRemoveShoppingCart } from "react-icons/md";
 import { GlobalContext } from "../lib/context";
 import CartButton from "./CartButton";
 import QtyCounter from "./QtyCounter";
-import Image from "next/image";
 
 interface ProductCardProps {
   code: string;

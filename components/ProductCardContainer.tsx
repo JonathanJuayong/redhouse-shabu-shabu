@@ -1,4 +1,4 @@
-import { Container, Grid } from "@chakra-ui/react";
+import { Grid } from "@chakra-ui/react";
 import ProductCard from "./ProductCard";
 
 interface ProductCardContainerProps {
