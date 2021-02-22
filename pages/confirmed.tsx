@@ -17,7 +17,6 @@ const ConfirmedPage: React.FC<ConfirmedPageProps> = () => {
   }, []);
   return (
     <Grid>
-      {router.pathname}
       <Text>Your order has been successfully submitted!</Text>
       <Text>Here is your confirmation code: {orderId as string}</Text>
       <Text>We will send you an email of your order.</Text>
