@@ -43,6 +43,29 @@ export const useFirestore = () => {
     }
   };
 
+  const getLatestOrders = async (limit) => {
+    const query = db
+      .collection("orders")
+      .orderBy("timestamp", "desc")
+      .limit(limit);
+    const snapshot = await query.get();
+    const docs = snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
+    const lastDoc = snapshot.docs[snapshot.docs.length - 1];
+    return { docs, lastDoc };
+  };
+
+  const getNextOrders = async (doc, limit) => {
+    const query = db
+      .collection("orders")
+      .orderBy("timestamp", "desc")
+      .limit(limit)
+      .startAfter(doc);
+    const snapshot = await query.get();
+    const docs = snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
+    const lastDoc = snapshot.docs[snapshot.docs.length - 1];
+    return { docs, lastDoc };
+  };
+
   const getAllProducts = async () => {
     const ref = db.doc("products/all");
     const snapshot = await ref.get();
@@ -54,5 +77,11 @@ export const useFirestore = () => {
     return snapshot.data();
   };
 
-  return { createOrder, getAllProducts, getProduct };
+  return {
+    createOrder,
+    getAllProducts,
+    getProduct,
+    getLatestOrders,
+    getNextOrders,
+  };
 };
