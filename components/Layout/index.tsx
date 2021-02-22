@@ -19,7 +19,8 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
   const route = useRouter();
   const { pathname } = route;
   const { isOpen, onOpen, onClose } = useDisclosure();
-  if (["/checkout", "/confirmed"].includes(pathname)) return <>{children}</>;
+  if (["/checkout", "/confirmed", "/admin"].includes(pathname))
+    return <>{children}</>;
   return (
     <>
       <main className="main-container">
