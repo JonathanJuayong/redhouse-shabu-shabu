@@ -12,7 +12,7 @@ import {
   useToast,
 } from "@chakra-ui/react";
 import { useRouter } from "next/dist/client/router";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { MdEmail, MdPerson } from "react-icons/md";
 import { GlobalContext } from "../lib/context";
 import { useFirestore } from "../lib/hooks";
@@ -55,33 +55,41 @@ const CheckoutForm: React.FC<CheckoutFormProps> = () => {
       });
       return;
     }
-    dispatch({
-      type: "SET_USER",
-      user: {
-        uid: "",
-        displayName: name,
-        photoUrl: "",
-        email,
-        phone: `+63${number}`,
-      },
-    });
-    dispatch({
-      type: "SET_BRANCH",
-      branch,
-    });
+    // dispatch({
+    //   type: "SET_USER",
+    //   user: {
+    //     uid: user?.uid,
+    //     displayName: name,
+    //     photoUrl: user?.photoUrl,
+    //     email,
+    //     phone: `+63${number}`,
+    //   },
+    // });
+    // dispatch({
+    //   type: "SET_BRANCH",
+    //   branch,
+    // });
     onOpen();
   };
   const handleProcessOrder = async () => {
     const orderConfirmationHandler = (id) => {
       router.push(`/confirmed?orderId=${id}`, "/checkout");
     };
-    const user = {
+    const userInfo = {
       name,
       email,
       number,
+      uid: user?.uid || "",
     };
-    createOrder(user, cart, branch, orderConfirmationHandler);
+    createOrder(userInfo, cart, branch, orderConfirmationHandler);
   };
+  useEffect(() => {
+    if (user !== null) {
+      setName(user?.displayName);
+      setEmail(user?.email);
+      setNumber(user?.phone);
+    }
+  }, []);
   return (
     <>
       <Grid gap="1em">
