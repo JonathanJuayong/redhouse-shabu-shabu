@@ -2,29 +2,39 @@ import { auth, db, googleProvider } from "./firebase";
 import firebase from "firebase/app";
 
 export const useAuthProvider = () => {
-  const googleSignIn = () => {
-    auth
-      .signInWithPopup(googleProvider)
-      .then(() => {
-        console.log("user signed in successfully with Google");
-      })
-      .catch((e) => {
-        console.log(e);
-      });
+  const googleSignIn = async (onSuccess?, onError?) => {
+    try {
+      await auth.signInWithPopup(googleProvider);
+      onSuccess();
+    } catch (error) {
+      onError(error);
+    }
   };
 
-  const signOut = () => {
-    auth
-      .signOut()
-      .then(() => {
-        console.log("user signed out successfully");
-      })
-      .catch((e) => {
-        console.log(e);
-      });
+  const emailAndPasswordSignIn = async (
+    email: string,
+    password: string,
+    onSuccess?,
+    onError?
+  ) => {
+    try {
+      const user = await auth.signInWithEmailAndPassword(email, password);
+      onSuccess(user);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
-  return { googleSignIn, signOut };
+  const signOut = async (onSuccess?, onError?) => {
+    try {
+      await auth.signOut();
+      onSuccess();
+    } catch (error) {
+      onError(error);
+    }
+  };
+
+  return { googleSignIn, emailAndPasswordSignIn, signOut };
 };
 
 export const useFirestore = () => {
@@ -77,11 +87,18 @@ export const useFirestore = () => {
     return snapshot.data();
   };
 
+  const checkIfAdmin = async (uid) => {
+    const ref = db.doc(`admins/${uid}`);
+    const docSnap = await ref.get();
+    return docSnap.exists;
+  };
+
   return {
     createOrder,
     getAllProducts,
     getProduct,
     getLatestOrders,
     getNextOrders,
+    checkIfAdmin,
   };
 };
