@@ -36,11 +36,11 @@ const HomePage: React.FC<HomePageProps> = ({ products }) => {
         <title>Order now | Redhouse Shabu-Shabu</title>
       </Head>
       <main>
-        <div className="debug">
-          {/* <h3>Debug:</h3> */}
-          {/* <pre>{JSON.stringify(router.query, null, 2)}</pre> */}
-          {/* <pre>{JSON.stringify(state.products, null, 2)}</pre> */}
-        </div>
+        {/* <div className="debug"> */}
+        {/* <h3>Debug:</h3> */}
+        {/* <pre>{JSON.stringify(router.query, null, 2)}</pre> */}
+        {/* <pre>{JSON.stringify(state.user, null, 2)}</pre> */}
+        {/* </div> */}
         <ProductCardContainer products={products} />
       </main>
       <Modal isOpen={!!code} onClose={onClose} size="6xl">
