@@ -1,5 +1,6 @@
 import { Badge, Box, Grid, HStack, IconButton, Text } from "@chakra-ui/react";
 import Link from "next/link";
+import { on } from "process";
 import { useContext } from "react";
 import { MdShoppingCart } from "react-icons/md";
 import { GlobalContext } from "../../lib/context";
@@ -12,9 +13,23 @@ interface HeaderProps {
 const Header: React.FC<HeaderProps> = ({ onOpen }) => {
   const { state } = useContext(GlobalContext);
   const cartCount = state.cart.length;
-  const { googleSignIn, signOut } = useAuthProvider();
-  const authText = state.user ? "SIGN OUT" : "SIGN IN";
-  const authHandler = state.user ? signOut : googleSignIn;
+  const { signOut } = useAuthProvider();
+  const signInComponent = (
+    <Link href="/sign-in">
+      <a>SIGN IN</a>
+    </Link>
+  );
+  const signOutHandler = () => {
+    const onSuccess = () => {};
+    const onError = (e) => console.log(e);
+    signOut(onSuccess, onError);
+  };
+  const signOutComponent = (
+    <Text as="a" cursor="pointer" onClick={signOutHandler}>
+      SIGN OUT
+    </Text>
+  );
+  const authComponent = state.user ? signOutComponent : signInComponent;
   return (
     <Grid
       alignContent="center"
@@ -36,11 +51,7 @@ const Header: React.FC<HeaderProps> = ({ onOpen }) => {
             <a>HOME</a>
           </Link>
         </li>
-        <li>
-          <Text as="a" cursor="pointer" onClick={authHandler}>
-            {authText}
-          </Text>
-        </li>
+        <li>{authComponent}</li>
         <li>
           <Box position="relative">
             <IconButton
