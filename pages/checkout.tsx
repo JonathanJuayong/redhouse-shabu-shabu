@@ -2,14 +2,11 @@ import {
   Box,
   Button,
   Collapse,
-  Divider,
-  FormControl,
   Grid,
   Text,
   useDisclosure,
 } from "@chakra-ui/react";
 import { useRouter } from "next/dist/client/router";
-import CartItemContainer from "../components/Cart/CartItemContainer";
 import CheckoutForm from "../components/CheckoutForm";
 import CheckoutSummary from "../components/CheckoutSummary";
 import { FaChevronLeft, FaChevronUp, FaChevronDown } from "react-icons/fa";

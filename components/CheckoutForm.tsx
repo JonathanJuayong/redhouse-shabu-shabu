@@ -55,20 +55,6 @@ const CheckoutForm: React.FC<CheckoutFormProps> = () => {
       });
       return;
     }
-    // dispatch({
-    //   type: "SET_USER",
-    //   user: {
-    //     uid: user?.uid,
-    //     displayName: name,
-    //     photoUrl: user?.photoUrl,
-    //     email,
-    //     phone: `+63${number}`,
-    //   },
-    // });
-    // dispatch({
-    //   type: "SET_BRANCH",
-    //   branch,
-    // });
     onOpen();
   };
   const handleProcessOrder = async () => {

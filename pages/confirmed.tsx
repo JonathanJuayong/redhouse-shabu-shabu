@@ -1,4 +1,4 @@
-import { Button, Grid, Text } from "@chakra-ui/react";
+import { Button, Container, Grid, Text } from "@chakra-ui/react";
 import { useRouter } from "next/dist/client/router";
 import { useContext, useEffect } from "react";
 import { GlobalContext } from "../lib/context";
@@ -16,14 +16,16 @@ const ConfirmedPage: React.FC<ConfirmedPageProps> = () => {
     });
   }, []);
   return (
-    <Grid>
-      <Text>Your order has been successfully submitted!</Text>
-      <Text>Here is your confirmation code: {orderId as string}</Text>
-      <Text>We will send you an email of your order.</Text>
-      <Button colorScheme="green" onClick={() => router.push("/")}>
-        Go back to shop
-      </Button>
-    </Grid>
+    <Container>
+      <Grid>
+        <Text>Your order has been successfully submitted!</Text>
+        <Text>Here is your confirmation code: {orderId as string}</Text>
+        <Text>We will send you an email of your order.</Text>
+        <Button colorScheme="green" onClick={() => router.push("/")}>
+          Go back to shop
+        </Button>
+      </Grid>
+    </Container>
   );
 };
 
