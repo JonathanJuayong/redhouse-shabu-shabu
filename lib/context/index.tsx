@@ -15,7 +15,6 @@ interface UserType {
 interface InitialState {
   user: UserType | null;
   cart: any | null;
-  branch: string | null;
   products;
 }
 interface GlobalContextType {
@@ -30,7 +29,6 @@ interface GlobalContextProviderProps {
 const initialState: InitialState = {
   user: null,
   cart: [],
-  branch: null,
   products: [],
 };
 
