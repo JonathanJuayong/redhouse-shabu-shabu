@@ -1,6 +1,7 @@
 import { Box, Button, Grid } from "@chakra-ui/react";
 import { PropsWithChildren, useState } from "react";
 import { HomeComponent, ViewOrders, ViewProducts } from "../components/Admin";
+import RestrictedPage from "../components/RestrictedPage";
 
 interface AdmingPageProps {}
 
@@ -16,7 +17,7 @@ const MenuButton: React.FC<PropsWithChildren<any>> = ({
 const AdmingPage: React.FC<AdmingPageProps> = () => {
   const [menuComponent, setMenuComponent] = useState(<HomeComponent />);
   return (
-    <>
+    <RestrictedPage>
       <Grid h="100vh" w="300px" left="0" alignContent="center" position="fixed">
         <MenuButton onClick={() => setMenuComponent(<HomeComponent />)}>
           Home
@@ -32,7 +33,7 @@ const AdmingPage: React.FC<AdmingPageProps> = () => {
         <Box></Box>
         <Grid py="3em">{menuComponent}</Grid>
       </Grid>
-    </>
+    </RestrictedPage>
   );
 };
 
