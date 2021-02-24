@@ -1,6 +1,5 @@
 import { Badge, Box, Grid, HStack, IconButton, Text } from "@chakra-ui/react";
 import Link from "next/link";
-import { on } from "process";
 import { useContext } from "react";
 import { MdShoppingCart } from "react-icons/md";
 import { GlobalContext } from "../../lib/context";
