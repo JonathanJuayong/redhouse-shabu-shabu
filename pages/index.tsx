@@ -12,6 +12,7 @@ import ProductDescription from "../components/ProductDescription";
 import { GlobalContext } from "../lib/context";
 import Head from "next/head";
 import { useFirestore } from "../lib/hooks";
+import { getCategories } from "../lib/utils";
 
 interface HomePageProps {
   products;
@@ -20,10 +21,11 @@ interface HomePageProps {
 const HomePage: React.FC<HomePageProps> = ({ products }) => {
   const router = useRouter();
   const { code } = router.query;
-  const { state, dispatch } = useContext(GlobalContext);
+  const { dispatch } = useContext(GlobalContext);
   const onClose = () => {
     router.push("/");
   };
+  const categories = getCategories(products);
   useEffect(() => {
     dispatch({
       type: "SET_PRODUCTS",
@@ -36,12 +38,24 @@ const HomePage: React.FC<HomePageProps> = ({ products }) => {
         <title>Order now | Redhouse Shabu-Shabu</title>
       </Head>
       <main>
-        {/* <div className="debug"> */}
-        {/* <h3>Debug:</h3> */}
-        {/* <pre>{JSON.stringify(router.query, null, 2)}</pre> */}
-        {/* <pre>{JSON.stringify(state.user, null, 2)}</pre> */}
-        {/* </div> */}
-        <ProductCardContainer products={products} />
+        <div className="debug">
+          {/* <h3>Debug:</h3> */}
+          {/* <pre>{JSON.stringify(router.query, null, 2)}</pre> */}
+          {/* <pre>{JSON.stringify(state.user, null, 2)}</pre> */}
+          {/* <pre>{JSON.stringify(categories, null, 2)}</pre> */}
+        </div>
+        {categories.map((category) => {
+          const categorizedProduct = products.filter(
+            (product) => product.category === category
+          );
+          return (
+            <ProductCardContainer
+              key={category}
+              category={category}
+              products={categorizedProduct}
+            />
+          );
+        })}
       </main>
       <Modal isOpen={!!code} onClose={onClose} size="6xl">
         <ModalOverlay />
