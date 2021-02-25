@@ -53,8 +53,8 @@ const ProductCard: React.FC<ProductCardProps> = ({
           <Image
             ref={imageRef}
             loading="lazy"
-            w="250px"
-            h="166px"
+            w="230px"
+            h="154px"
             onLoad={onImageLoadedHandler}
             src={imageURL}
             alt={name}
