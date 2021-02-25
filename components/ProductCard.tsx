@@ -47,21 +47,21 @@ const ProductCard: React.FC<ProductCardProps> = ({
 
   return (
     <Grid justifyContent="center" gap="1em" w="100%">
-      <Link scroll={false} href={`/?code=${code}`} as={`/products/${code}`}>
-        <Box cursor="pointer">
-          {isImageLoading && <Skeleton w="100%" h="100%" />}
-          <Image
-            ref={imageRef}
-            loading="lazy"
-            w="230px"
-            h="154px"
-            onLoad={onImageLoadedHandler}
-            src={imageURL}
-            alt={name}
-            fallback={<Skeleton w="100%" h="100%" />}
-          />
-        </Box>
-      </Link>
+      <Box cursor="pointer">
+        {isImageLoading && <Skeleton w="100%" h="100%" />}
+        <Image
+          ref={imageRef}
+          loading="lazy"
+          w="230px"
+          h="154px"
+          onLoad={onImageLoadedHandler}
+          src={imageURL}
+          alt={name}
+          fallback={<Skeleton w="100%" h="100%" />}
+        />
+      </Box>
+      {/* <Link scroll={false} href={`/?code=${code}`} as={`/products/${code}`}>
+      </Link> */}
       <Box>
         <Text>{name}</Text>
         <Text>PHP {price}.00</Text>
