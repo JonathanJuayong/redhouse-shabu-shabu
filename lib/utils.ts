@@ -1,5 +1,3 @@
-import { db } from "./firebase";
-
 export const saveToLocalStorage = (data, name: string) => {
   const json = JSON.stringify(data);
   localStorage.setItem(name, json);
@@ -16,4 +14,9 @@ export const loadLocalStorage = (name: string) => {
 
 export const clearLocalStorage = (name: string) => {
   if (localStorage.getItem(name)) localStorage.setItem(name, "");
+};
+
+export const getCategories = (products) => {
+  const categories: Array<string> = products.map((item) => item.category);
+  return [...new Set(categories)];
 };
