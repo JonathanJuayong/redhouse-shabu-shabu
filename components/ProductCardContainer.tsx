@@ -37,12 +37,12 @@ const ProductCardContainer: React.FC<ProductCardContainerProps> = ({
     setCurrentProductIndex((prev) => prev - 1);
     setNewProductIndex(currentProductIndex);
   };
-  const swipeHandlers = useSwipeable({
-    onSwipedLeft: focusNextProduct,
-    onSwipedRight: focusPreviousProduct,
-    trackTouch: true,
-    trackMouse: true,
-  });
+  // const swipeHandlers = useSwipeable({
+  //   onSwipedLeft: focusNextProduct,
+  //   onSwipedRight: focusPreviousProduct,
+  //   trackTouch: true,
+  //   trackMouse: true,
+  // });
   useEffect(() => {
     // prevent calling scroll() onMount
     // only after mounting
@@ -93,7 +93,7 @@ const ProductCardContainer: React.FC<ProductCardContainerProps> = ({
         />
       )}
       <Grid
-        {...swipeHandlers}
+        // {...swipeHandlers}
         gap={["1em", , , "2em"]}
         margin="0 auto"
         pb="10em"
