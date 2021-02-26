@@ -30,20 +30,11 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
         <Footer />
         <Box position="fixed" bottom="5vh" right="5vw">
           <Box position="relative">
-            <Box position="absolute" right="10px" zIndex="2">
-              <Badge
-                opacity={cart.length > 0 ? 1 : 0}
-                transition="opacity .2s"
-                fontSize="1.2rem"
-                borderRadius="50px"
-                colorScheme="pink"
-              >
-                !
-              </Badge>
-            </Box>
             <IconButton
-              opacity={cartFabOpacity}
-              transition="opacity 0.2s"
+              transform={
+                cart.length === 0 ? "translateY(50vh)" : "translateY(0)"
+              }
+              transition="all 0.2s ease"
               borderRadius="50px"
               p="2.5em 2em"
               aria-label="cart trigger"
