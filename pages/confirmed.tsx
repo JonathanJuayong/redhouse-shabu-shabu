@@ -16,7 +16,7 @@ const ConfirmedPage: React.FC<ConfirmedPageProps> = () => {
     });
   }, []);
   return (
-    <Container>
+    <Container mt="3em">
       <Grid>
         <Text>Your order has been successfully submitted!</Text>
         <Text>Here is your confirmation code: {orderId as string}</Text>

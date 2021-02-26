@@ -19,6 +19,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
   const route = useRouter();
   const { pathname } = route;
   const { isOpen, onOpen, onClose } = useDisclosure();
+  const cartFabOpacity = cart.length > 0 ? 1 : 0;
   if (["/checkout", "/confirmed", "/admin"].includes(pathname))
     return <>{children}</>;
   return (
@@ -35,18 +36,20 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
                 transition="opacity .2s"
                 fontSize="1.2rem"
                 borderRadius="50px"
-                colorScheme="red"
+                colorScheme="pink"
               >
                 !
               </Badge>
             </Box>
             <IconButton
+              opacity={cartFabOpacity}
+              transition="opacity 0.2s"
               borderRadius="50px"
               p="2.5em 2em"
               aria-label="cart trigger"
               icon={<MdShoppingCart />}
               onClick={onOpen}
-              colorScheme="green"
+              colorScheme="orange"
             />
           </Box>
         </Box>

@@ -1,6 +1,7 @@
 import { Box, Button, Grid, Text, Image } from "@chakra-ui/react";
 import { useContext } from "react";
 import { GlobalContext } from "../../lib/context";
+import { theme } from "../../lib/theme";
 import QtyCounter from "../QtyCounter";
 
 interface CartItemProps {
@@ -24,11 +25,19 @@ const CartItem: React.FC<CartItemProps> = ({ code, name, total, imageURL }) => {
         <Image w="100%" src={imageURL} />
       </Box>
       <Grid>
-        <Text>{name}</Text>
+        <Text
+          fontFamily={theme.fonts.display}
+          fontWeight="700"
+          fontSize="1.2rem"
+        >
+          {name}
+        </Text>
         <Text>PHP {total}.00</Text>
         <QtyCounter code={code} />
         <Box justifySelf="start"></Box>
-        <Button onClick={removeFromCart}>Remove</Button>
+        <Button colorScheme="orange" variant="outline" onClick={removeFromCart}>
+          Remove
+        </Button>
       </Grid>
     </Grid>
   );

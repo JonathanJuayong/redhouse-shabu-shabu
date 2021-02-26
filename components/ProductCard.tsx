@@ -2,6 +2,7 @@ import { Box, Grid, Image, Skeleton, Text } from "@chakra-ui/react";
 import Link from "next/link";
 import { useContext, useEffect, useRef, useState } from "react";
 import { GlobalContext } from "../lib/context";
+import { theme } from "../lib/theme";
 import CartButton from "./CartButton";
 import QtyCounter from "./QtyCounter";
 
@@ -47,7 +48,7 @@ const ProductCard: React.FC<ProductCardProps> = ({
 
   return (
     <Grid justifyContent="center" gap="1em" w="100%">
-      <Box cursor="pointer">
+      <Box>
         {isImageLoading && <Skeleton w="100%" h="100%" />}
         <Image
           ref={imageRef}
@@ -63,8 +64,10 @@ const ProductCard: React.FC<ProductCardProps> = ({
       {/* <Link scroll={false} href={`/?code=${code}`} as={`/products/${code}`}>
       </Link> */}
       <Box>
-        <Text>{name}</Text>
-        <Text>PHP {price}.00</Text>
+        <Text fontFamily="lusitana, serif" fontWeight="700" fontSize="1.2rem">
+          {name}
+        </Text>
+        <Text color={theme.colors.gray[500]}>PHP {price}.00</Text>
       </Box>
       <Box style={counterStyle} transition="all .2s">
         <QtyCounter code={code} />
