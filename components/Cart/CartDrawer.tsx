@@ -30,22 +30,8 @@ const CartDrawer: React.FC<CartDrawerProps> = ({ isOpen, onClose }) => {
           <DrawerCloseButton />
           <DrawerHeader>Cart:</DrawerHeader>
           <DrawerBody>
-            <CartItemContainer />
+            <CartItemContainer onClose={onClose} />
           </DrawerBody>
-          <DrawerFooter>
-            {cart.length > 0 && (
-              <Button
-                w="100%"
-                colorScheme="green"
-                onClick={() => {
-                  router.push("/checkout");
-                  onClose();
-                }}
-              >
-                Checkout
-              </Button>
-            )}
-          </DrawerFooter>
         </DrawerContent>
       </DrawerOverlay>
     </Drawer>

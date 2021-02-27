@@ -1,11 +1,15 @@
-import { Grid, Text } from "@chakra-ui/react";
+import { Button, Grid, Text } from "@chakra-ui/react";
+import { useRouter } from "next/dist/client/router";
 import { useContext } from "react";
 import { GlobalContext } from "../../lib/context";
 import CartItem from "./CartItem";
 
-interface CartItemContainerProps {}
+interface CartItemContainerProps {
+  onClose: () => void;
+}
 
-const CartItemContainer: React.FC<CartItemContainerProps> = () => {
+const CartItemContainer: React.FC<CartItemContainerProps> = ({ onClose }) => {
+  const router = useRouter();
   const { state } = useContext(GlobalContext);
   const cartCount = state.cart.length;
   const cartTotal = state.cart.reduce((acc, cur) => {
@@ -22,7 +26,6 @@ const CartItemContainer: React.FC<CartItemContainerProps> = () => {
         </>
       ) : (
         <>
-          <Text as="h2">Total: PHP {cartTotal}.00</Text>
           {state.cart.map((item) => (
             <CartItem
               key={item.code}
@@ -32,6 +35,16 @@ const CartItemContainer: React.FC<CartItemContainerProps> = () => {
               imageURL={item.imageURL}
             />
           ))}
+          <Text fontSize="1.5rem">Total: PHP {cartTotal}.00</Text>
+          <Button
+            colorScheme="green"
+            onClick={() => {
+              router.push("/checkout");
+              onClose();
+            }}
+          >
+            Checkout
+          </Button>
         </>
       )}
     </Grid>
