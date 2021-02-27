@@ -5,6 +5,7 @@ import {
   Grid,
   HStack,
   IconButton,
+  Image,
   Text,
 } from "@chakra-ui/react";
 import { useRouter } from "next/dist/client/router";
@@ -47,18 +48,28 @@ const Header: React.FC<HeaderProps> = ({ onOpen }) => {
       borderBottom={`1px solid ${theme.colors.gray[300]}`}
       bgColor="inherit"
       alignContent="center"
+      px="10em"
       py="3em"
       gap="1em"
       zIndex={4}
-      h="15vh"
       alignItems="center"
-      justifyContent="center"
       position="sticky"
       top="0"
       background="white"
       mb="2em"
+      h={["20vh", , , "15vh"]}
+      gridAutoFlow={["row", , , "column"]}
+      justifyContent={["center", , , "space-between"]}
     >
-      <Box justifySelf="center">Redhouse Shabu Shabu</Box>
+      <Image
+        alt="red house logo"
+        loading="eager"
+        onClick={() => router.push("/")}
+        cursor="pointer"
+        justifySelf="center"
+        src="/images/redhouse-logo.svg"
+        w={[200, , , 220]}
+      />
       <HStack justifySelf="center" spacing="2em" as="ul" listStyleType="none">
         <li>
           <Link href="/">
