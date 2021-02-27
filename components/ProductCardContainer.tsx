@@ -3,14 +3,10 @@ import {
   Center,
   Divider,
   Grid,
-  IconButton,
   Text,
   useMediaQuery,
 } from "@chakra-ui/react";
 import ProductCard from "./ProductCard";
-import { MdChevronLeft, MdChevronRight } from "react-icons/md";
-import { useEffect, useRef, useState } from "react";
-import { useSwipeable } from "react-swipeable";
 import { theme } from "../lib/theme";
 import Carousel from "./Carousel";
 

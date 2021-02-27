@@ -1,5 +1,5 @@
-import { Box, Grid, IconButton, OtherProps } from "@chakra-ui/react";
-import { Children, useEffect, useRef } from "react";
+import { Box, Grid, IconButton } from "@chakra-ui/react";
+import { Children, useRef } from "react";
 import { MdChevronLeft, MdChevronRight } from "react-icons/md";
 
 interface CarouselProps {

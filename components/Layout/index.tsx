@@ -1,6 +1,6 @@
 import Header from "./Header";
 import Footer from "./Footer";
-import { Badge, Box, IconButton, useDisclosure } from "@chakra-ui/react";
+import { Box, IconButton, useDisclosure } from "@chakra-ui/react";
 import { MdShoppingCart } from "react-icons/md";
 import CartDrawer from "../Cart/CartDrawer";
 import { useRouter } from "next/dist/client/router";
@@ -19,7 +19,6 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
   const route = useRouter();
   const { pathname } = route;
   const { isOpen, onOpen, onClose } = useDisclosure();
-  const cartFabOpacity = cart.length > 0 ? 1 : 0;
   if (["/checkout", "/confirmed", "/admin"].includes(pathname))
     return <>{children}</>;
   return (

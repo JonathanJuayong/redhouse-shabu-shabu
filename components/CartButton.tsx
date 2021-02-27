@@ -57,8 +57,6 @@ const CartButton: React.FC<CartButtonProps> = ({ isAddedToCart, code }) => {
   return (
     <Button
       w="100%"
-      // bgColor="#945142"
-      // color="white"
       colorScheme="orange"
       variant={btnVariant}
       onClick={onClickHandler}

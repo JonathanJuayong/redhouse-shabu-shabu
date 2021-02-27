@@ -1,13 +1,4 @@
-import {
-  Box,
-  Grid,
-  Image,
-  List,
-  ListItem,
-  Text,
-  UnorderedList,
-} from "@chakra-ui/react";
-import { theme } from "../../lib/theme";
+import { Box, Grid, List, ListItem, Text } from "@chakra-ui/react";
 
 interface FooterProps {}
 

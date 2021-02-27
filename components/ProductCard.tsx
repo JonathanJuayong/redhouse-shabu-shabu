@@ -1,5 +1,4 @@
 import { Box, Grid, Image, Skeleton, Text } from "@chakra-ui/react";
-import Link from "next/link";
 import { useContext, useEffect, useRef, useState } from "react";
 import { GlobalContext } from "../lib/context";
 import { theme } from "../lib/theme";
@@ -61,8 +60,6 @@ const ProductCard: React.FC<ProductCardProps> = ({
           fallback={<Skeleton w="100%" h="100%" />}
         />
       </Box>
-      {/* <Link scroll={false} href={`/?code=${code}`} as={`/products/${code}`}>
-      </Link> */}
       <Box>
         <Text fontFamily="lusitana, serif" fontWeight="700" fontSize="1.2rem">
           {name}
