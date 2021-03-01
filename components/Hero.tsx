@@ -5,8 +5,10 @@ interface HeroProps {}
 
 const Hero: React.FC<HeroProps> = () => {
   const scrollToShop = () => {
-    document.getElementById("shop").scrollIntoView({
+    document.getElementById("menu").scrollIntoView({
       behavior: "smooth",
+      inline: "start",
+      block: "start",
     });
   };
   return (
@@ -15,7 +17,7 @@ const Hero: React.FC<HeroProps> = () => {
       justifyContent="center"
       alignItems={["center", , , "unset"]}
       flexDirection={["column", "column", "column", "row"]}
-      h="80vh"
+      minH="85vh"
     >
       <Box order={[2, , , 1]} mt={["0", "2em", "3em", "6em"]}>
         <Text
@@ -36,7 +38,7 @@ const Hero: React.FC<HeroProps> = () => {
           colorScheme="orange"
           size="lg"
         >
-          Shop Now
+          Check our menu
         </Button>
       </Box>
       <Image
