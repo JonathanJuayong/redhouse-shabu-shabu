@@ -44,7 +44,7 @@ const SignInPage: React.FC<SignInPageProps> = () => {
   };
 
   return (
-    <Container>
+    <Container h="70vh">
       <Grid gap="2em">
         <Button
           onClick={googleSignInHandler}
