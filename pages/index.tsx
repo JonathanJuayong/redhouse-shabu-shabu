@@ -1,5 +1,6 @@
 import {
   Box,
+  Image,
   Modal,
   ModalBody,
   ModalCloseButton,
@@ -16,6 +17,8 @@ import { useFirestore } from "../lib/hooks";
 import { getCategories } from "../lib/utils";
 import dynamic from "next/dynamic";
 import Hero from "../components/Hero";
+import Features from "../components/Features";
+import MenuBanner from "../components/MenuBanner";
 
 const ProductCardContainer = dynamic(
   () => import("../components/ProductCardContainer"),
@@ -46,6 +49,10 @@ const HomePage: React.FC<HomePageProps> = ({ products }) => {
     <>
       <Head>
         <title>Order now | Redhouse Shabu-Shabu</title>
+        <meta
+          name="description"
+          content="Red House Shabu-Shabu is now accepting online orders"
+        />
       </Head>
       <main>
         <div className="debug">
@@ -56,7 +63,9 @@ const HomePage: React.FC<HomePageProps> = ({ products }) => {
         </div>
       </main>
       <Hero />
-      <Box id="shop"></Box>
+      <Features />
+      <MenuBanner />
+      <Box></Box>
       {categories.map((category) => {
         const categorizedProduct = products.filter(
           (product) => product.category === category
