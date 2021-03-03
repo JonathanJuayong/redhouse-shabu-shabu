@@ -1,5 +1,6 @@
 import {
   Box,
+  Grid,
   Image,
   Modal,
   ModalBody,
@@ -54,11 +55,11 @@ const HomePage: React.FC<HomePageProps> = ({ products }) => {
           content="Red House Shabu-Shabu is now accepting online orders"
         />
       </Head>
-
-      <Hero />
-      <Features />
+      <Box mx={["2em", , , "5em"]}>
+        <Hero />
+        <Features />
+      </Box>
       <MenuBanner />
-      <Box></Box>
       {categories.map((category) => {
         const categorizedProduct = products.filter(
           (product) => product.category === category

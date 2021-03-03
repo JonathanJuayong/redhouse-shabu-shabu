@@ -23,11 +23,11 @@ const Hero: React.FC<HeroProps> = () => {
         <Text
           mb=".5em"
           lineHeight="1.2"
-          maxWidth="10ch"
+          maxWidth={["20ch", , , "10ch"]}
           fontFamily={theme.fonts.display}
           fontSize={["2.3rem", "2.75rem", "3rem", "3.7rem"]}
         >
-          Authentic Taiwan Shabu-Shabu
+          Authentic Taiwan Hotpot
         </Text>
         <Text fontSize={["1rem", "", "", "1.5rem"]} mb="2em">
           Now Accepting Orders Online
