@@ -48,20 +48,13 @@ const HomePage: React.FC<HomePageProps> = ({ products }) => {
   return (
     <>
       <Head>
-        <title>Order now | Redhouse Shabu-Shabu</title>
+        <title>Order now | Red House Shabu-Shabu</title>
         <meta
           name="description"
           content="Red House Shabu-Shabu is now accepting online orders"
         />
       </Head>
-      <main>
-        <div className="debug">
-          {/* <h3>Debug:</h3> */}
-          {/* <pre>{JSON.stringify(router.query, null, 2)}</pre> */}
-          {/* <pre>{JSON.stringify(state.user, null, 2)}</pre> */}
-          {/* <pre>{JSON.stringify(categories, null, 2)}</pre> */}
-        </div>
-      </main>
+
       <Hero />
       <Features />
       <MenuBanner />
