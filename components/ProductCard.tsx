@@ -7,36 +7,36 @@ import QtyCounter from "./QtyCounter";
 
 interface ProductCardProps {
   code: string;
-  name: string;
-  price: number;
-  imageURL: string;
 }
 
-const ProductCard: React.FC<ProductCardProps> = ({
-  code,
-  name,
-  price,
-  imageURL,
-}) => {
+const ProductCard: React.FC<ProductCardProps> = ({ code }) => {
   const [isImageLoading, setIsImageLoading] = useState(true);
   const imageRef = useRef<HTMLImageElement>(null);
-  const { state } = useContext(GlobalContext);
+  const {
+    state: { cart, products },
+  } = useContext(GlobalContext);
   const [isAddedToCart, setIsAddedToCart] = useState<boolean>(false);
   const counterStyle = {
     opacity: isAddedToCart ? "1" : "0",
     transform: isAddedToCart ? "translateY(0)" : "translateY(10px)",
   };
-  let isAlreadyAdded;
   const onImageLoadedHandler = () => {
     setIsImageLoading(false);
   };
+  const product = products.find((item) => item.code === code);
+  const productDetails = {
+    name: product?.name,
+    price: product?.price,
+    imageURL: product?.imageSmall,
+  };
 
   //todo: refactor useEffect code
+  let isAlreadyAdded;
   useEffect(() => {
     isAlreadyAdded =
-      typeof state.cart.find((item) => item.code === code) !== "undefined";
+      typeof cart.find((item) => item.code === code) !== "undefined";
     setIsAddedToCart(isAlreadyAdded);
-  }, [state.cart]);
+  }, [cart]);
 
   useEffect(() => {
     const imageCurrentElement = imageRef.current;
@@ -55,16 +55,18 @@ const ProductCard: React.FC<ProductCardProps> = ({
           w="230px"
           h="154px"
           onLoad={onImageLoadedHandler}
-          src={imageURL}
-          alt={name}
+          src={productDetails.imageURL}
+          alt={productDetails.name}
           fallback={<Skeleton w="100%" h="100%" />}
         />
       </Box>
       <Box>
         <Text fontFamily="lusitana, serif" fontWeight="700" fontSize="1.2rem">
-          {name}
+          {productDetails.name}
         </Text>
-        <Text color={theme.colors.gray[500]}>PHP {price}.00</Text>
+        <Text color={theme.colors.gray[500]}>
+          PHP {productDetails.price}.00
+        </Text>
       </Box>
       <Box style={counterStyle} transition="all .2s">
         <QtyCounter code={code} />
@@ -72,7 +74,7 @@ const ProductCard: React.FC<ProductCardProps> = ({
       <CartButton
         code={code}
         isAddedToCart={
-          typeof state.cart.find((item) => item.code === code) !== "undefined"
+          typeof cart.find((item) => item.code === code) !== "undefined"
         }
       />
     </Grid>

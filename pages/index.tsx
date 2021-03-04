@@ -41,6 +41,16 @@ const HomePage: React.FC<HomePageProps> = ({ products }) => {
   };
   const categories = getCategories(products);
   useEffect(() => {
+    const reducedProducts = products.reduce((acc, cur) => {
+      return {
+        ...acc,
+        [cur.category]: {
+          ...acc[cur.category],
+          [cur.code]: { ...cur },
+        },
+      };
+    }, {});
+    console.log(reducedProducts);
     dispatch({
       type: "SET_PRODUCTS",
       products,

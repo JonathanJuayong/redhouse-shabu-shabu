@@ -49,12 +49,7 @@ const ProductCardContainer: React.FC<ProductCardContainerProps> = ({
                 key={product.code}
                 transition="opacity .3s"
               >
-                <ProductCard
-                  code={product.code}
-                  name={product.name}
-                  imageURL={product.imageSmall}
-                  price={product.price}
-                />
+                <ProductCard code={product.code} />
               </Box>
             ))}
           </Grid>
@@ -62,13 +57,7 @@ const ProductCardContainer: React.FC<ProductCardContainerProps> = ({
       ) : (
         <Carousel length={products.length}>
           {products.map((product) => (
-            <ProductCard
-              key={product.code}
-              code={product.code}
-              name={product.name}
-              imageURL={product.imageSmall}
-              price={product.price}
-            />
+            <ProductCard key={product.code} code={product.code} />
           ))}
         </Carousel>
       )}
